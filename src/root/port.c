@@ -380,9 +380,7 @@ PortInitializer::PortInitializer()
 
 int Port::isNan(double r)
 {
-#if __APPLE__
-    return __inline_isnan(r);
-#elif __OpenBSD__
+#if __OpenBSD__ || __APPLE__
     return isnan(r);
 #else
     #undef isnan
@@ -392,9 +390,7 @@ int Port::isNan(double r)
 
 int Port::isNan(longdouble r)
 {
-#if __APPLE__
-    return __inline_isnan(r);
-#elif __OpenBSD__
+#if __OpenBSD__ || __APPLE__
     return isnan(r);
 #else
     #undef isnan
